@@ -61,6 +61,11 @@
 
                 // shows the date
                 echo '<h1>', $city_data->list[$i]->dt_txt , '</h1>';
+                $iconName= $city_data->list[$i]->weather[0]->icon;
+                // use that to construct a url which points to the icon
+                $iconLink= "http://openweathermap.org/img/w/" . $iconName . ".png";
+                // write it to your html 
+                echo "<img src=$iconLink>";
 
                 // general information about the weather
                 echo '<h2>Temperature</h2>';
@@ -80,12 +85,7 @@
 
                 // how is the weather according to the API (an array)
                 echo '<h2>The weather</h2>';
-                echo '<p><strong>Weather description:</strong> ', $city_data->list[$i]->weather[0]->description, '</p>';
-                echo '<p><strong>Icon:</strong> ', $iconName= $city_data->list[$i]->weather[0]->icon, '</p>';
-                // use that to construct a url which points to the icon
-                echo '<p><strong>Icon:</strong> ', $iconLink= "http://openweathermap.org/img/w/" + $iconName + ".png";
-                // write it to your html 
-                echo "<img src='$iconLink'/ >";
+                echo '<p><strong>Description:</strong> ', $city_data->list[$i]->weather[0]->description, '</p>';
               echo '</div>';             
         }
     }
