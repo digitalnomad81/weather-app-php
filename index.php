@@ -13,7 +13,7 @@
   </head>
 
   <body>
-  <p>hallo</p>
+  
     <form method="post" action="index.php">
     How is the weather in: 
     <input type="text" name="cityName">
