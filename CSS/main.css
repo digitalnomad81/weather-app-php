@@ -1,4 +1,4 @@
-form {
+/* form {
   display: block;
   font: 1rem "Fira Sans", sans-serif;
 }
@@ -6,4 +6,24 @@ form {
 input,
 label {
   margin: 0.4rem 0;
-}
+} */
+
+.container {
+    display: flex;
+    width:60%;
+    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+  .item {
+    background: rgb(88, 0, 219);
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+
+  body {
+    margin: 1rem;
+    font: 12px system-ui;
+    background: rgb(88, 0, 219);
+  }

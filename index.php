@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="CSS/main.css" />
-    <link
+    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <!-- <link
       rel="stylesheet"
       href="//fonts.googleapis.com/css?family=Raleway:400,700,900"
-    />
+    /> -->
     <title>Weather App</title>
   </head>
 
@@ -32,13 +32,13 @@
         // Decodes a JSON string into PHP array (parse)
         $city_data = json_decode($json_data);
         $city_list = count($city_data->list);
-
+        echo '<div class="container">';
         // for loop to get the forecast 5 times
         for ($i = 0 ; $i < $city_list; $i++) {
             $city_time = explode(" ", $city_data->list[$i]->dt_txt) ;
             if ($city_time[1] == '15:00:00') {
-            echo '<div class="container">';
-            echo '<div>';
+            
+              echo '<div class="item">';
                 // shows the city and the country
                 echo '<h1>', $city_data->city->name, ' (', $city_data->city->country, ')</h1>';
 
@@ -64,10 +64,11 @@
                 // how is the weather according to the API (an array)
                 echo '<h2>The weather</h2>';
                 echo '<p><strong>Weather description:</strong> ', $city_data->list[$i]->weather[0]->description, '</p>';
-            echo '</div>';
-            echo '</div>';
+              echo '</div>';
+            
         }
     }
+    echo '</div>';
     }
     ?>
 
