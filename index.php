@@ -8,7 +8,7 @@
     <link rel="icon" href="http://openweathermap.org/img/wn/10d@2x.png"/>
     <link
       rel="stylesheet"
-      href="//fonts.googleapis.com/css?family=Raleway:400,700,900"
+      href="//fonts.googleapis.com/css?family=Just+Another+Hand"
     />
     <title>Weather App</title>
     <!-- Styles -->
@@ -29,12 +29,14 @@
   
   <h1 class="title">Weather Forecast</h1>;
 
-  </div>
+  <div class="box">
     <form method="post" action="index.php" class="form">
     Dude, how is the weather in: 
     <input type="text" name="cityName">
     <input type="submit" value="Search" name="submit"> <!-- assign a name for the button -->
-    </form>
+    </form>;
+  </div>;
+    
 
     <?php
     // Define the variable cityName from html so it can be used in php
@@ -49,16 +51,20 @@
         // Decodes a JSON string into PHP array (parse)
         $city_data = json_decode($json_data);
         $city_list = count($city_data->list);
+
+        echo '<div class="city_title">';
+        // shows the city and the country
+        echo '<h1>', $city_data->city->name, ' (', $city_data->city->country, ')</h1>';
+        echo '</div>';
+
         echo '<div class="container">';
         // for loop to get the forecast 5 times
         for ($i = 0 ; $i < $city_list; $i++) {
             $city_time = explode(" ", $city_data->list[$i]->dt_txt) ;
             if ($city_time[1] == '15:00:00') {
             
-              echo '<div class="item">';
-                // shows the city and the country
-                echo '<h1>', $city_data->city->name, ' (', $city_data->city->country, ')</h1>';
 
+                echo '<div class="item">';
                 // shows the date
                 echo '<h1>', $city_data->list[$i]->dt_txt , '</h1>';
                 $iconName= $city_data->list[$i]->weather[0]->icon;
